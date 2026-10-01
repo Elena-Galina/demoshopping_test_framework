@@ -28,4 +28,12 @@ public class DriverFactory {
                 throw new IllegalArgumentException("Неподдерживаемый браузер: " + browser);
         }
     }
+
+    public static void log(String str) {
+        System.out.println(str);
+    }
+
+    public static void logf(String str, Object... arg) {
+        log(String.format(str, arg));
+    }
 }
