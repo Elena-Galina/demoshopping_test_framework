@@ -12,14 +12,19 @@ import java.lang.reflect.Method;
 public class BaseUiTest {
 
     private WebDriver driver;
+    private final Configuration configuration = new Configuration();
 
     private void startDriver() {
-        DriverFactory driverFactory = new DriverFactory(new Configuration());
+        DriverFactory driverFactory = new DriverFactory(configuration);
         driver = driverFactory.createDriver();
     }
 
     protected WebDriver getDriver() {
         return driver;
+    }
+
+    private void openBaseUrl() {
+        getDriver().get(configuration.getBaseUrl());
     }
 
     @BeforeMethod
@@ -28,6 +33,9 @@ public class BaseUiTest {
 
         DriverFactory.log("Open the browser");
         startDriver();
+
+        DriverFactory.log("Get the web page");
+        openBaseUrl();
     }
 
     @AfterMethod

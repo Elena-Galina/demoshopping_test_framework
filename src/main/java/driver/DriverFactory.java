@@ -22,6 +22,7 @@ public class DriverFactory {
 
                 if (configuration.isHeadless()) {
                     options.addArguments("--headless");
+                    options.addArguments("--window-size=1920,1080");
                 }
                 return new ChromeDriver(options);
             default:
